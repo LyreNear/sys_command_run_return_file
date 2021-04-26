@@ -1,11 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/stat.h>
-
-#define MAX_FILE_PATH_LENGTH 128
-#define MAX_BUFFER_LENGTH 1024
+#include <include.h>
 
 char* sys_command_run_return_file(char *_acCMD) {
     FILE *fFp = NULL;
@@ -55,12 +48,4 @@ cleanup:
     close(iFdTmp);
     pclose(fFp);
     return NULL;
-}
-
-int main() {
-    char cmd[20] = {"ll"} ,*pcCmdRetFilename = NULL;
-    pcCmdRetFilename = sys_command_run_return_file(cmd);
-    if (NULL != pcCmdRetFilename)
-        free(pcCmdRetFilename);
-    return 0;
 }
